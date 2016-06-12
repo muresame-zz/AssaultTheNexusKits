@@ -72,7 +72,7 @@ public class Chronoshift extends SpecialItemKit {
 	@Override
 	protected ItemStack getIcon()
 	{
-		return new ItemStack(Material.GOLD_BOOTS);
+		return new ItemStack(Material.WATCH);
 	}
 
 	@Override
@@ -127,6 +127,10 @@ public class Chronoshift extends SpecialItemKit {
 		final Player p = e.getEntity();
 		final ItemStack[] drops = p.getInventory().getContents();
 		Player k = e.getEntity().getKiller();
+		if(k == null)
+		{
+			return;
+		}
 		final Location dLoc = k.getLocation();
 		if(this.chronosift.contains(p))
 		{
