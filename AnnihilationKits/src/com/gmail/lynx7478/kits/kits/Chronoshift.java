@@ -126,6 +126,7 @@ public class Chronoshift extends SpecialItemKit {
 	{
 		final Player p = e.getEntity();
 		final ItemStack[] drops = p.getInventory().getContents();
+		final ItemStack[] armor = p.getInventory().getArmorContents();
 		Player k = e.getEntity().getKiller();
 		if(k == null)
 		{
@@ -134,7 +135,6 @@ public class Chronoshift extends SpecialItemKit {
 		final Location dLoc = k.getLocation();
 		if(this.chronosift.contains(p))
 		{
-			Bukkit.broadcastMessage(ChatColor.GREEN+"CRHONOSHIFT!");
 			e.getDrops().clear();
 			for(int i = 0; i<5; i++)
 			{
@@ -146,6 +146,7 @@ public class Chronoshift extends SpecialItemKit {
 				{
 					p.teleport(dLoc);
 					p.getInventory().setContents(drops);
+					p.getInventory().setArmorContents(armor);
 				}
 					}, 20);
 		}
