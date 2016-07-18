@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
-public abstract class ConfigurableKit extends Kit
+public abstract class KitBase extends Kit
 {
 	private String name;
 	private ItemStack icon;

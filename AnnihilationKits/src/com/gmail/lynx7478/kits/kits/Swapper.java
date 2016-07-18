@@ -15,9 +15,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import com.gmail.lynx7478.kits.base.SpecialItemKit;
+import com.gmail.lynx7478.kits.base.AnniKit;
 
-public class Swapper extends SpecialItemKit
+public class Swapper extends AnniKit
 {
 	@Override
 	protected void onInitialize()
@@ -145,6 +145,12 @@ public class Swapper extends SpecialItemKit
 
 	@Override
 	protected boolean performSecondaryAction(Player player, AnniPlayer p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean passive() {
 		// TODO Auto-generated method stub
 		return false;
 	}

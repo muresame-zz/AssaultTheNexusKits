@@ -20,9 +20,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.projectiles.ProjectileSource;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 
-public class Archer extends ConfigurableKit
+public class Archer extends KitBase
 {
 //	private final ItemStack Bow = KitUtils.addEnchant(KitUtils.getBow(),Enchantment.ARROW_KNOCKBACK,1);
 //	private final ItemStack Arrows = KitUtils.addSoulbound(new ItemStack(Material.ARROW,16));

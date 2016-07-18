@@ -19,9 +19,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 
-public class Vampire extends ConfigurableKit
+public class Vampire extends KitBase
 {
 	private Random rand;
 	@Override

@@ -1,6 +1,12 @@
 package com.gmail.lynx7478.kits.base;
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
+import com.gmail.lynx7478.anni.main.AnnihilationMain;
 import com.gmail.lynx7478.anni.voting.ConfigManager;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,8 +18,9 @@ import org.bukkit.inventory.ItemStack;
 import com.google.common.base.Function;
 
 
-public abstract class SpecialItemKit extends ConfigurableKit
+public abstract class AnniKit extends KitBase
 {
+	private int runnableID;
 	private ItemStack specialItem;
 	private String specialItemName;
 	protected Delays delays;
@@ -32,6 +39,13 @@ public abstract class SpecialItemKit extends ConfigurableKit
 					return isSpecialItem(stack);
 				}}));
 		}
+		runnableID = Bukkit.getScheduler().scheduleSyncRepeatingTask(AnnihilationMain.getInstance(), new Runnable()
+				{
+			public void run()
+			{
+				AnniKit.this.passive();
+			}
+				}, 0L, 5L);
 		onInitialize();
 	}
 	
@@ -46,6 +60,7 @@ public abstract class SpecialItemKit extends ConfigurableKit
 	protected abstract boolean performSecondaryAction(Player player, AnniPlayer p);
 	protected abstract long getDelayLength();
 	protected abstract boolean useDefaultChecking();
+	protected abstract boolean passive();
 	
 	public ItemStack getSpecialItem()
 	{

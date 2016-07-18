@@ -40,9 +40,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 
-public class Transporter extends ConfigurableKit
+public class Transporter extends KitBase
 {
 	private ItemStack transporterItem;
 	private String transporterItemName;

@@ -18,9 +18,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import com.gmail.lynx7478.kits.base.SpecialItemKit;
+import com.gmail.lynx7478.kits.base.AnniKit;
 
-public class Ninja extends SpecialItemKit
+public class Ninja extends AnniKit
 {
 	
 	public ArrayList<Player> inmunePlayers;
@@ -168,6 +168,12 @@ public class Ninja extends SpecialItemKit
 			}
 			return true;
 		}
+		return false;
+	}
+
+	@Override
+	protected boolean passive() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }

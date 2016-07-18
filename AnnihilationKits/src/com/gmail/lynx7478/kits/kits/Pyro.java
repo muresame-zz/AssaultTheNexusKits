@@ -21,9 +21,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
 
-import com.gmail.lynx7478.kits.base.SpecialItemKit;
+import com.gmail.lynx7478.kits.base.AnniKit;
 
-public class Pyro extends SpecialItemKit
+public class Pyro extends AnniKit
 {
 	
 	private Random rand;
@@ -187,6 +187,12 @@ public class Pyro extends SpecialItemKit
 
 	@Override
 	protected boolean performSecondaryAction(Player player, AnniPlayer p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean passive() {
 		// TODO Auto-generated method stub
 		return false;
 	}

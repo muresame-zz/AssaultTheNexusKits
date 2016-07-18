@@ -13,9 +13,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 
-public class Miner extends ConfigurableKit
+public class Miner extends KitBase
 {
 //	private final ItemStack Pick = KitUtils.addEnchant(KitUtils.getStonePick(),Enchantment.DIG_SPEED,1);
 //	private final ItemStack Furnace = KitUtils.addSoulbound(new ItemStack(Material.FURNACE));

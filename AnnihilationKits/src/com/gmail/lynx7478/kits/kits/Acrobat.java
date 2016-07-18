@@ -23,11 +23,11 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 import com.gmail.lynx7478.kits.base.DelayUpdate;
 import com.gmail.lynx7478.kits.base.Delays;
 
-public class Acrobat extends ConfigurableKit
+public class Acrobat extends KitBase
 {
 	//private final ItemStack Arrows = KitUtils.addSoulbound(new ItemStack(Material.ARROW,6));
 

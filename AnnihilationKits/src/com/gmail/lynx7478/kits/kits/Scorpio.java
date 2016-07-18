@@ -28,13 +28,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 import com.gmail.lynx7478.kits.base.DelayUpdate;
 import com.gmail.lynx7478.kits.base.Delays;
 import com.gmail.lynx7478.kits.base.Direction;
 
 
-public class Scorpio extends ConfigurableKit
+public class Scorpio extends KitBase
 {
 	private ItemStack hookItem;
 	private String hookItemName;

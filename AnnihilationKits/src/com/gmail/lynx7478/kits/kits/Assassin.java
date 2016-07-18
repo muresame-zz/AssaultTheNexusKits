@@ -22,9 +22,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.gmail.lynx7478.kits.base.SpecialItemKit;
+import com.gmail.lynx7478.kits.base.AnniKit;
 
-public class Assassin extends SpecialItemKit
+public class Assassin extends AnniKit
 {
 	//private ItemStack leap;
 	
@@ -215,6 +215,12 @@ public class Assassin extends SpecialItemKit
 @Override
 protected boolean performSecondaryAction(Player player, AnniPlayer p) {
 	 
+	return false;
+}
+
+@Override
+protected boolean passive() {
+	// TODO Auto-generated method stub
 	return false;
 }
 

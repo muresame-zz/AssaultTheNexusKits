@@ -29,9 +29,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 
-public class Scout extends ConfigurableKit
+public class Scout extends KitBase
 {
 	private ItemStack grapple;
 	private String grappleName;

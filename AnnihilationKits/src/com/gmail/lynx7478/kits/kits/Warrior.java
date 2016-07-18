@@ -17,9 +17,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 
-public class Warrior extends ConfigurableKit
+public class Warrior extends KitBase
 {
 	//private final ItemStack Sword = KitUtils.addEnchant(KitUtils.getWoodSword(), Enchantment.KNOCKBACK, 1);
 	

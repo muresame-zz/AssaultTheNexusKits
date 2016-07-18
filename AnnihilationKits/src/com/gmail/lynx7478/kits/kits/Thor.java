@@ -21,10 +21,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
 import com.gmail.lynx7478.kits.base.Direction;
-import com.gmail.lynx7478.kits.base.SpecialItemKit;
+import com.gmail.lynx7478.kits.base.AnniKit;
 
 
-public class Thor extends SpecialItemKit
+public class Thor extends AnniKit
 {
 	@Override
 	protected void onInitialize()
@@ -182,6 +182,12 @@ public class Thor extends SpecialItemKit
 
 	@Override
 	protected boolean performSecondaryAction(Player player, AnniPlayer p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean passive() {
 		// TODO Auto-generated method stub
 		return false;
 	}

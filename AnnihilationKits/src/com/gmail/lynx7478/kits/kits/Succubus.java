@@ -20,13 +20,13 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.gmail.lynx7478.kits.base.ConfigurableKit;
+import com.gmail.lynx7478.kits.base.KitBase;
 import com.gmail.lynx7478.kits.base.Delays;
 import com.gmail.lynx7478.kits.base.StandardItemUpdater;
 import com.google.common.base.Function;
 
 
-public class Succubus extends ConfigurableKit
+public class Succubus extends KitBase
 {
 	private ItemStack sucItem;
 	private String sucItemName;

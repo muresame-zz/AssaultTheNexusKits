@@ -17,9 +17,9 @@ import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
-import com.gmail.lynx7478.kits.base.SpecialItemKit;
+import com.gmail.lynx7478.kits.base.AnniKit;
 
-public class Chronoshift extends SpecialItemKit {
+public class Chronoshift extends AnniKit {
 	
 	private ArrayList<Player> chronosift;
 	
@@ -155,6 +155,12 @@ public class Chronoshift extends SpecialItemKit {
 	@Override
 	protected boolean performSecondaryAction(Player player, AnniPlayer p) 
 	{
+		return false;
+	}
+
+	@Override
+	protected boolean passive() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
