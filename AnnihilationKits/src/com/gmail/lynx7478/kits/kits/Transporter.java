@@ -14,6 +14,7 @@ import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
 import com.gmail.lynx7478.anni.utils.Loc;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 import com.gmail.lynx7478.anni.voting.ConfigManager;
 
 import org.bukkit.ChatColor;
@@ -201,6 +202,7 @@ public class Transporter extends KitBase
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void specialItemActionCheck(final PlayerInteractEvent event)
 	{
@@ -254,7 +256,17 @@ public class Transporter extends KitBase
 						
 						b.setType(Material.QUARTZ_ORE);
 						setBlockOwner(b, p.getID());
-						event.getPlayer().playSound(b.getLocation(), Sound.BLAZE_HIT, 1F, 1.9F);
+						if(!VersionUtils.is1_9())
+						{
+							try {
+								event.getPlayer().playSound(b.getLocation(), (Sound) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Sound"), "ENTITY_BLAZE_HURT"), 1F, 1.9F);
+							} catch (ClassNotFoundException e) {
+								e.printStackTrace();
+							}
+						}else
+						{
+							event.getPlayer().playSound(b.getLocation(), Sound.BLAZE_HIT, 1F, 1.9F);
+						}
 						event.setCancelled(true);
 					}
 					else event.getPlayer().sendMessage(ChatColor.RED+"You cannot place that here.");
