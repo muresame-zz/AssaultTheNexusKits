@@ -202,6 +202,10 @@ public class Scorpio extends KitBase
 									loc2.setY(loc1.getY());
 									Vector vec = loc2.toVector().subtract(loc1.toVector()).setY(.08D).multiply(7);
 									user.setVelocity(vec);
+									if(target.getLocation().getBlock().getType() != Material.AIR)
+									{
+										target.teleport(loc2);
+									}
 								}
 							}
 							else
