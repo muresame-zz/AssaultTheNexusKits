@@ -238,7 +238,7 @@ public class Scorpio extends KitBase
 								{
 									return;
 								}
-								target.teleport(tele);
+								target.teleport(loc);
 							}
 						}
 						item.remove();
