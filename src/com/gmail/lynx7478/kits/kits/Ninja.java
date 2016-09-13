@@ -122,6 +122,7 @@ public class Ninja extends AnniKit
 		{
 			Player p = (Player) e.getEntity();
 			AnniPlayer aP = AnniPlayer.getPlayer(p.getUniqueId());
+			//TODO: There's an NPE below. Fix it.
 			if(aP.getKit().equals(this) || inmunePlayers.contains(p))
 			{
 				if(e.getCause() == DamageCause.FALL)
