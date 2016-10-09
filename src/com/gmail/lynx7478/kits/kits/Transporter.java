@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +11,7 @@ import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.anniGame.AnniTeam;
 import com.gmail.lynx7478.anni.anniGame.Game;
 import com.gmail.lynx7478.anni.anniGame.Nexus;
+import com.gmail.lynx7478.anni.anniMap.RegeneratingBlock;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
@@ -202,7 +204,7 @@ public class Transporter extends KitBase
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void specialItemActionCheck(final PlayerInteractEvent event)
 	{
@@ -219,6 +221,13 @@ public class Transporter extends KitBase
 					Block b = event.getClickedBlock();
 					Block other = b.getRelative(BlockFace.UP);
 					Block other2 = other.getRelative(BlockFace.UP);
+					//TODO: Test this. Don't be lazy.
+					if(isRegeneratingBlock(b.getType()))
+					{
+						event.getPlayer().sendMessage(ChatColor.RED+"You cannot place a portal on a regenerating block.");
+						event.setCancelled(true);
+						return;
+					}
 					if(other.getType() == Material.AIR &&  other2.getType() == Material.AIR && canPlace(b.getType()))
 					{
 						for(AnniTeam t : AnniTeam.Teams)
@@ -256,7 +265,7 @@ public class Transporter extends KitBase
 						
 						b.setType(Material.QUARTZ_ORE);
 						setBlockOwner(b, p.getID());
-						if(!VersionUtils.is1_9())
+						if(VersionUtils.is1_9() || VersionUtils.getVersion().contains("v_1_10"))
 						{
 							try {
 								event.getPlayer().playSound(b.getLocation(), (Sound) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Sound"), "ENTITY_BLAZE_HURT"), 1F, 1.9F);
@@ -328,6 +337,19 @@ public class Transporter extends KitBase
 			case QUARTZ_ORE:
 				return false;
 		}
+	}
+	
+	// Checks whether the material is a regenerating block or not.
+	private boolean isRegeneratingBlock(Material m)
+	{
+		if(Game.getGameMap() != null)
+		{
+			if(Game.getGameMap().getRegeneratingBlocks().getRegeneratingBlocks().containsKey(m))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST,ignoreCancelled = true)
