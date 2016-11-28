@@ -75,6 +75,8 @@ public class Chronoshift extends AnniKit {
 		return new ItemStack(Material.WATCH);
 	}
 
+
+	//TODO: We should probably add a better description to the chronoshift.
 	@Override
 	protected List<String> getDefaultDescription()
 	{
