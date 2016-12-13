@@ -1,10 +1,21 @@
 package com.gmail.lynx7478.kits.utils.npc;
 
+import com.gmail.lynx7478.anni.anniGame.Game;
+import com.mojang.authlib.GameProfile;
+import net.minecraft.server.v1_8_R3.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.entity.Player;
+
+import java.util.UUID;
+
 /**
  * Created by SKA4 on 27/11/2016.
  */
 public class NPC {
-    /**
 
     //TODO: Since we're using NMS, we should probably use reflection so it works on all versions.
 
@@ -43,5 +54,4 @@ public class NPC {
     {
         return entity;
     }
-     **/
 }
