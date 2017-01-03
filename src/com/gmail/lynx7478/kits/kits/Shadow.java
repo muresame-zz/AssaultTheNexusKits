@@ -20,10 +20,12 @@ import java.util.List;
  * Created by SKA4 on 27/11/2016.
  */
 public class Shadow extends AnniKit {
+	
+	//TODO: Finish the kit.
 
     private static HashMap<AnniPlayer, YANPC> npcs;
 
-    private YANPC getNPCFrom(AnniPlayer anniPlayer)
+	private YANPC getNPCFrom(AnniPlayer anniPlayer)
     {
         return npcs.get(anniPlayer);
     }
