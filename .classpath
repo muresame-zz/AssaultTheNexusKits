@@ -4,5 +4,19 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Exports/Annihilation/Annihilation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.7.2-R0.4-SNAPSHOT-1339.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.7.5-R0.1-SNAPSHOT-1387.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.7.8-R0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.7.9-R0.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.7.10-SNAPSHOT-b1657.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.8.3-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.8.4-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.8.5-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.8-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.9.4-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.9-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.10.2-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.10-R0.1-SNAPSHOT-latest.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabi/Documents/Java/Libraries/spigot-1.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
