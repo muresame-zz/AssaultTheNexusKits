@@ -4,6 +4,8 @@ import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
 import com.gmail.lynx7478.kits.base.AnniKit;
+import com.gmail.lynx7478.yanpclib.YANPC;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -19,16 +21,16 @@ import java.util.List;
  */
 public class Shadow extends AnniKit {
 
-    private static HashMap<AnniPlayer, NPC> npcs;
+    private static HashMap<AnniPlayer, YANPC> npcs;
 
-    private NPC getNPCFrom(AnniPlayer anniPlayer)
+    private YANPC getNPCFrom(AnniPlayer anniPlayer)
     {
         return npcs.get(anniPlayer);
     }
 
     @Override
     protected void onInitialize() {
-        npcs = new HashMap<AnniPlayer, NPC>();
+        npcs = new HashMap<AnniPlayer, YANPC>();
     }
 
     @Override
@@ -63,14 +65,15 @@ public class Shadow extends AnniKit {
         {
             if(!npcs.containsKey(p))
             {
-                npcs.put(p, new NPC(p.getName(), player.getLocation()));
+                npcs.put(p, new YANPC());
+                npcs.get(p).spawn(player.getLocation(), p.getName());
                 Bukkit.getScheduler().runTaskLater(AnnihilationMain.getInstance(), new Runnable()
                 {
                     public void run()
                     {
                         if(npcs.containsKey(p))
                         {
-                            npcs.get(p).destroyNPC();
+                            npcs.get(p).destroy();
                             npcs.remove(p);
                         }
                     }
@@ -87,8 +90,8 @@ public class Shadow extends AnniKit {
         {
             if(npcs.containsKey(p))
             {
-                player.teleport(npcs.get(p).getEntity().getBukkitEntity().getLocation());
-                npcs.get(p).destroyNPC();
+                player.teleport(npcs.get(p).getEntity().getLocation());
+                npcs.get(p).destroy();
                 npcs.remove(p);
                 //TODO: Here is were we should apply the cooldown if we wish to.
                 return true;
