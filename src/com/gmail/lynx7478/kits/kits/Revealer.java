@@ -136,7 +136,7 @@ public class Revealer extends AnniKit {
 							final Collection<PotionEffect> effs = nP.getActivePotionEffects();
 							nP.removePotionEffect(PotionEffectType.INVISIBILITY);
 							this.revealedPlayers.add(p);
-							Bukkit.getScheduler().runTaskLater(AnnihilationMain.getInstance(), new Runnable()
+							/** Bukkit.getScheduler().runTaskLater(AnnihilationMain.getInstance(), new Runnable()
 							{
 								public void run()
 								{
@@ -150,7 +150,8 @@ public class Revealer extends AnniKit {
 									}
 									nP.getActivePotionEffects().add(invs);
 								}
-							}, 60L);
+							}, 60L); **/
+							return true;
 						}
 					}
 				}
