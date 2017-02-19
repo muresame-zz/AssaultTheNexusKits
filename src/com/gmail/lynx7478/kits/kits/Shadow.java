@@ -1,10 +1,26 @@
 package com.gmail.lynx7478.kits.kits;
 
+import java.util.HashMap;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
+import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.main.AnnihilationMain;
+import com.gmail.lynx7478.kits.base.AnniKit;
+import com.gmail.lynx7478.yanpclib.YANPC;
+
 /**
  * Created by SKA4 on 27/11/2016.
  */
-public class Shadow {
-/*	
+public class Shadow extends AnniKit {
+
 	//TODO: Finish the kit.
 
     private static HashMap<AnniPlayer, YANPC> npcs;
@@ -125,5 +141,5 @@ public class Shadow {
     @Override
     public void cleanup(Player player) {
 
-    } */
+    }
 }
