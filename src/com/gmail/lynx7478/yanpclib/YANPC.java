@@ -13,6 +13,8 @@ public class YANPC {
 	
 	private Class<?> npcClass;
 	
+	private Location spawnLoc;
+	
 	public YANPC()
 	{
 		handler = null;
@@ -34,6 +36,7 @@ public class YANPC {
 	
 	public void spawn(Location loc, String name)
 	{
+		this.spawnLoc = loc;
 		handler.spawn(loc, name);
 	}
 	
@@ -59,6 +62,11 @@ public class YANPC {
 			}
 		}
 		return ent;
+	}
+	
+	public Location getSpawnLocation()
+	{
+		return spawnLoc;
 	}
 	
 	
