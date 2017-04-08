@@ -85,7 +85,14 @@ public class Shadow extends AnniKit
 	{
         final List<String> toReturn = new ArrayList<String>();
         final ChatColor aqua = ChatColor.AQUA;
-        toReturn.add(aqua + "Under construction.");
+        toReturn.add(aqua + "You are the lurker.");
+        toReturn.add(" ");
+        toReturn.add(aqua + "Use your dark magic skills");
+        toReturn.add(aqua + "to cast a shadow to");
+        toReturn.add(aqua + "you can return to at any moment.");
+        toReturn.add(aqua + "Use this to lurk your foes,");
+        toReturn.add(aqua + "get out of danger");
+        toReturn.add(aqua + "or for elaborate strageties.");
         return toReturn;
 	}
 
