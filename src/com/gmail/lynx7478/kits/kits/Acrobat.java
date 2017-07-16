@@ -130,7 +130,6 @@ public class Acrobat extends KitBase
 			    player.setAllowFlight(false);
 			    player.setFlying(false);		    
 			    player.setVelocity(player.getLocation().getDirection().setY(1).multiply(1));
-			    player.playSound(player.getLocation(), Sound.ZOMBIE_INFECT, 1.0F, 2.0F);
 			}
 			else
 			{
