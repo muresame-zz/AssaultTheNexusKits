@@ -7,6 +7,7 @@ import com.gmail.lynx7478.anni.anniEvents.PlayerKilledEvent;
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -39,7 +40,10 @@ public class Defender extends KitBase
 	@Override
 	protected ItemStack getIcon() 
 	{
-		return new ItemStack(Material.WOOD_SWORD);
+		if(!VersionUtils.getVersion().contains("13"))
+			return new ItemStack(Material.WOOD_SWORD);
+		else
+			return new ItemStack(Material.WOODEN_SWORD);
 	}
 
 	@Override

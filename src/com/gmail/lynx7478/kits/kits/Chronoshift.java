@@ -17,6 +17,7 @@ import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 import com.gmail.lynx7478.kits.base.AnniKit;
 
 public class Chronoshift extends AnniKit {
@@ -32,7 +33,16 @@ public class Chronoshift extends AnniKit {
 	@Override
 	protected ItemStack specialItem()
 	{
-		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(Material.WATCH));
+		Material material;
+		if(!VersionUtils.getVersion().contains("13"))
+		{
+			material = Material.WATCH;
+		}else
+		{
+			//TODO: Use reflection!! field.set(this, Enum.valueOf((Class<Enum>) field.getType(), value));
+			material = Material.CLOCK;
+		}
+		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = firestorm.getItemMeta();
 		meta.setDisplayName(getSpecialItemName()+" "+ChatColor.GREEN+"READY");
 		firestorm.setItemMeta(meta);

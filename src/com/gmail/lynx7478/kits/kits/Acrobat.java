@@ -6,6 +6,7 @@ import java.util.List;
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.anniGame.Game;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -46,7 +47,16 @@ public class Acrobat extends KitBase
 					AnniPlayer p = AnniPlayer.getPlayer(player.getUniqueId());
 					if(p != null && p.getKit().equals(k))
 					{
-						player.playSound(player.getLocation(), Sound.WITHER_SHOOT, 1.0F, 2.0F);
+						Sound sound;
+						if(!VersionUtils.getVersion().contains("13"))
+						{
+							sound = Sound.WITHER_SHOOT;
+						}else
+						{
+							sound = Sound.ENTITY_WITHER_SHOOT;
+						}
+						
+						player.playSound(player.getLocation(), sound, 1.0F, 2.0F);
 						player.setAllowFlight(true);
 					}
 				}

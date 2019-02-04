@@ -20,6 +20,7 @@ import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 import com.gmail.lynx7478.kits.base.AnniKit;
 
 public class Revealer extends AnniKit {
@@ -35,7 +36,15 @@ public class Revealer extends AnniKit {
 	@Override
 	protected ItemStack specialItem()
 	{
-		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(Material.EYE_OF_ENDER));
+		Material material;
+		if(!VersionUtils.getVersion().contains("13"))
+		{
+			material = Material.EYE_OF_ENDER;
+		}else
+		{
+			material = Material.ENDER_EYE;
+		}
+		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = firestorm.getItemMeta();
 		meta.setDisplayName(getSpecialItemName()+" "+ChatColor.GREEN+"READY");
 		firestorm.setItemMeta(meta);

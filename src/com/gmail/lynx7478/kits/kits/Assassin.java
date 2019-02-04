@@ -7,6 +7,8 @@ import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -163,7 +165,10 @@ public class Assassin extends AnniKit
 	@Override
 	protected ItemStack getIcon()
 	{
-		return new ItemStack(Material.GOLD_SWORD);
+		if(!VersionUtils.getVersion().contains("13"))
+			return new ItemStack(Material.GOLD_SWORD);
+		else
+			return new ItemStack(Material.GOLDEN_SWORD);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.gmail.lynx7478.anni.anniEvents.ResourceBreakEvent;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -34,7 +35,10 @@ public class Enchanter extends KitBase
 	@Override
 	protected ItemStack getIcon()
 	{
+		if(!VersionUtils.getVersion().contains("13"))
 		return new ItemStack(Material.EXP_BOTTLE);
+		else
+			return new ItemStack(Material.EXPERIENCE_BOTTLE);
 	}
 	
 	@Override

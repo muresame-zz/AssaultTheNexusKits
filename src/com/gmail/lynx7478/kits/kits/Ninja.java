@@ -5,6 +5,7 @@ import java.util.List;
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -34,7 +35,15 @@ public class Ninja extends AnniKit
 	@Override
 	protected ItemStack specialItem()
 	{
-		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(Material.GOLD_BOOTS));
+		Material material;
+		if(!VersionUtils.getVersion().contains("13"))
+		{
+			material = Material.GOLD_BOOTS;
+		}else
+		{
+			material = Material.GOLDEN_BOOTS;
+		}
+		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = firestorm.getItemMeta();
 		meta.setDisplayName(getSpecialItemName()+" "+ChatColor.GREEN+"READY");
 		firestorm.setItemMeta(meta);

@@ -6,6 +6,7 @@ import java.util.List;
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -146,7 +147,10 @@ public class Thor extends AnniKit
 	@Override
 	protected ItemStack getIcon()
 	{
+		if(!VersionUtils.getVersion().contains("13"))
 		return new ItemStack(Material.GOLD_AXE);
+		else
+			return new ItemStack(Material.GOLDEN_AXE);
 	}
 
 	@Override

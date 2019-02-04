@@ -79,7 +79,7 @@ public class Miner extends KitBase
 	{
 		if(event.getPlayer().getKit().equals(this))
 		{
-			if(event.getResource().Type != Material.LOG && event.getResource().Type != Material.MELON_BLOCK && event.getResource().Type != Material.GRAVEL)
+			if(!event.getResource().toString().contains("LOG") && !event.getResource().toString().contains("MELON") && event.getResource().Type != Material.GRAVEL)
 			{
 				ItemStack[] products = event.getProducts();
 				if(products != null)

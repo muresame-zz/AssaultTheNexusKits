@@ -173,7 +173,7 @@ public class Transporter extends KitBase
 		{
 			Player player = event.getPlayer();
 			Block b = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
-			if(b.getType() == Material.QUARTZ_ORE)
+			if(b.getType().name().contains("QUARTZ_ORE"))
 			{
 				UUID owner = getBlocksOwner(b);
 				if(owner != null)
@@ -193,8 +193,16 @@ public class Transporter extends KitBase
 							loc.setY(loc.getY()+1);
 							player.teleport(this.getMiddle(loc));
 							loc.getWorld().playEffect(loc, Effect.MOBSPAWNER_FLAMES, 1);
-							tele.getLoc1().toLocation().getWorld().playSound(tele.getLoc1().toLocation(), Sound.ENDERMAN_TELEPORT, 1F,(float)Math.random());
-							tele.getLoc2().toLocation().getWorld().playSound(tele.getLoc2().toLocation(), Sound.ENDERMAN_TELEPORT, 1F,(float)Math.random());
+							Sound sound;
+							if(!VersionUtils.getVersion().contains("13"))
+							{
+								sound = Sound.ENDERMAN_TELEPORT;
+							}else
+							{
+								sound = Sound.ENTITY_ENDERMAN_TELEPORT;
+							}
+							tele.getLoc1().toLocation().getWorld().playSound(tele.getLoc1().toLocation(), sound, 1F,(float)Math.random());
+							tele.getLoc2().toLocation().getWorld().playSound(tele.getLoc2().toLocation(), sound, 1F,(float)Math.random());
 							tele.delay();
 							event.setCancelled(true);
 						}
@@ -210,7 +218,7 @@ public class Transporter extends KitBase
 	{
 		if(event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_BLOCK)
 		{
-			if(event.getClickedBlock().getType() != Material.QUARTZ_ORE && event.getItem() != null && event.getItem().getType() == this.transporterItem.getType() && event.getAction() == Action.RIGHT_CLICK_BLOCK)
+			if(!event.getClickedBlock().getType().name().contains("QUARTZ_ORE") && event.getItem() != null && event.getItem().getType() == this.transporterItem.getType() && event.getAction() == Action.RIGHT_CLICK_BLOCK)
 			{
 				AnniPlayer p = AnniPlayer.getPlayer(event.getPlayer().getUniqueId());
 				if(p != null && p.getKit().equals(this) && isTransporterItem(event.getItem()) && Game.getGameMap() != null && 
@@ -262,10 +270,18 @@ public class Transporter extends KitBase
 							tele.setLoc2(b.getLocation(), b.getState());
 						else
 							tele.setLoc1(b.getLocation(), b.getState());
-						
-						b.setType(Material.QUARTZ_ORE);
+						Material mat;
+						if(!VersionUtils.getVersion().contains("13"))
+						{
+							mat = Material.QUARTZ_ORE;
+						}else
+						{
+							mat = Material.NETHER_QUARTZ_ORE;
+						}
+						b.setType(mat);
 						setBlockOwner(b, p.getID());
-						if(VersionUtils.is1_9() || VersionUtils.getVersion().contains("v_1_10"))
+						if(VersionUtils.is1_9() || VersionUtils.getVersion().contains("v_1_10") || VersionUtils.getVersion().contains("11") || VersionUtils.getVersion().contains("12")
+								|| VersionUtils.getVersion().contains("13"))
 						{
 							try {
 								event.getPlayer().playSound(b.getLocation(), (Sound) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Sound"), "ENTITY_BLAZE_HURT"), 1F, 1.9F);
@@ -282,7 +298,7 @@ public class Transporter extends KitBase
 					//------------------------------------------
 				}
 			}
-			else if(event.getClickedBlock().getType() == Material.QUARTZ_ORE && event.getPlayer().getGameMode() != GameMode.CREATIVE)
+			else if(event.getClickedBlock().getType().name().contains("QUARTZ_ORE") && event.getPlayer().getGameMode() != GameMode.CREATIVE)
 			{
 				AnniPlayer p = AnniPlayer.getPlayer(event.getPlayer().getUniqueId());
 				if(p != null)
@@ -313,6 +329,7 @@ public class Transporter extends KitBase
 	
 	private boolean canPlace(Material type)
 	{
+//TODO: 	Actually fix this with 1.13 and remove the lazy fix.
 		//This tells if a transporter block can be placed at this type of block
 		switch(type)
 		{
@@ -326,15 +343,15 @@ public class Transporter extends KitBase
 			case FURNACE:
 			case DISPENSER:
 			case DROPPER:
-			case WORKBENCH:
-			case BURNING_FURNACE:
+//			case WORKBENCH:
+//			case BURNING_FURNACE:
 			case HOPPER:
 			case BEACON:
 			case ANVIL:
-			case SIGN_POST:
+//			case SIGN_POST:
 			case WALL_SIGN:
-			case ENDER_PORTAL:
-			case QUARTZ_ORE:
+//			case ENDER_PORTAL:
+//			case QUARTZ_ORE:
 				return false;
 		}
 	}
@@ -357,7 +374,7 @@ public class Transporter extends KitBase
 	{
 		///block under your feet
 		Block to = event.getTo().getBlock().getRelative(BlockFace.DOWN);
-		if(to.getType() == Material.QUARTZ_ORE)
+		if(to.getType().name().contains("QUARTZ_ORE"))
 		{
 			Location x = event.getTo();
 			Location y = event.getFrom();
@@ -382,7 +399,7 @@ public class Transporter extends KitBase
 	{
 		Player player = event.getPlayer();
 		Block b = event.getBlock();
-		if(b.getType() == Material.QUARTZ_ORE)
+		if(b.getType().name().contains("QUARTZ_ORE"))
 		{
 			event.setCancelled(true);
 			AnniPlayer p = AnniPlayer.getPlayer(player.getUniqueId());

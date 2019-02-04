@@ -7,6 +7,7 @@ import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
 import com.gmail.lynx7478.anni.main.AnnihilationMain;
 import com.gmail.lynx7478.anni.utils.DamageControl;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 import com.gmail.lynx7478.anni.voting.ConfigManager;
 
 import org.bukkit.Bukkit;
@@ -191,14 +192,22 @@ public class Scorpio extends KitBase
 						Player user = owner.getPlayer();
 						if(user != null)
 						{
+							Sound sound;
+							if(!VersionUtils.getVersion().contains("13"))
+							{
+								sound = Sound.DOOR_OPEN;
+							}else
+							{
+								sound = Sound.BLOCK_IRON_DOOR_OPEN;
+							}
 							if(owner.getTeam() == p.getTeam())
 							{			
 								Location loc1 = user.getLocation();
 								Location loc2 = target.getLocation();
 								if(loc2.getY() >= loc1.getY())
 								{
-									target.getWorld().playSound(target.getLocation(), Sound.DOOR_OPEN, 1F, 0.1F);
-									user.getWorld().playSound(user.getLocation(), Sound.DOOR_OPEN, 1F, 0.1F);
+									target.getWorld().playSound(target.getLocation(), sound, 1F, 0.1F);
+									user.getWorld().playSound(user.getLocation(), sound, 1F, 0.1F);
 									loc2.setY(loc1.getY());
 									Vector vec = loc2.toVector().subtract(loc1.toVector()).setY(.08D).multiply(7);
 									user.setVelocity(vec);
@@ -210,8 +219,8 @@ public class Scorpio extends KitBase
 							}
 							else
 							{
-								target.getWorld().playSound(target.getLocation(), Sound.DOOR_OPEN, 1F, 0.1F);
-								user.getWorld().playSound(user.getLocation(), Sound.DOOR_OPEN, 1F, 0.1F);
+								target.getWorld().playSound(target.getLocation(), sound, 1F, 0.1F);
+								user.getWorld().playSound(user.getLocation(), sound, 1F, 0.1F);
                                 DamageControl.addTempImmunity(target, DamageCause.FALL,System.currentTimeMillis()+8000); //8 second fall immunity
 								Location loc = user.getLocation();
 								Location tele;

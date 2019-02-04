@@ -5,6 +5,8 @@ import java.util.List;
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -27,7 +29,15 @@ public class Swapper extends AnniKit
 	@Override
 	protected ItemStack specialItem()
 	{
-		ItemStack swapper = KitUtils.addSoulbound(new ItemStack(Material.GREEN_RECORD));
+		Material material;
+		if(!VersionUtils.getVersion().contains("13"))
+		{
+			material = Material.GREEN_RECORD;
+		}else
+		{
+			material = Material.LEGACY_GREEN_RECORD;
+		}
+		ItemStack swapper  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = swapper.getItemMeta();
 		meta.setDisplayName(getSpecialItemName()+" "+ChatColor.GREEN+"READY");
 		swapper.setItemMeta(meta);	

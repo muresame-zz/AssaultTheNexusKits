@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -116,7 +117,15 @@ public class Warrior extends KitBase
 	@Override
 	protected Loadout getFinalLoadout()
 	{
-		return new Loadout().addSoulboundEnchantedItem(new ItemStack(Material.WOOD_SWORD), Enchantment.KNOCKBACK, 1).addWoodPick().addWoodAxe().addHealthPotion1();
+		Material mat;
+		if(!VersionUtils.getVersion().contains("13"))
+		{
+			mat = Material.WOOD_SWORD;
+		}else
+		{
+			mat = Material.WOODEN_SWORD;
+		}
+		return new Loadout().addSoulboundEnchantedItem(new ItemStack(mat), Enchantment.KNOCKBACK, 1).addWoodPick().addWoodAxe().addHealthPotion1();
 	}
 
 	@Override

@@ -6,6 +6,8 @@ import java.util.Random;
 import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -37,7 +39,15 @@ public class Pyro extends AnniKit
 	@Override
 	protected ItemStack specialItem()
 	{
-		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(Material.FIREBALL));
+		Material material;
+		if(!VersionUtils.getVersion().contains("13"))
+		{
+			material = Material.FIREBALL;
+		}else
+		{
+			material = Material.LEGACY_FIREBALL;
+		}
+		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = firestorm.getItemMeta();
 		meta.setDisplayName(getSpecialItemName()+" "+ChatColor.GREEN+"READY");
 		firestorm.setItemMeta(meta);

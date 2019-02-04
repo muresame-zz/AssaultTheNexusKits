@@ -6,6 +6,7 @@ import com.gmail.lynx7478.anni.anniGame.AnniPlayer;
 import com.gmail.lynx7478.anni.anniGame.Game;
 import com.gmail.lynx7478.anni.kits.KitUtils;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 import com.gmail.lynx7478.anni.voting.ConfigManager;
 
 import org.bukkit.Material;
@@ -67,7 +68,10 @@ public class Succubus extends KitBase
 	@Override
 	protected ItemStack getIcon()
 	{
+		if(!VersionUtils.getVersion().contains("13"))
 		return new ItemStack(Material.INK_SACK, 1, (short) 0, (byte) 1);
+		else
+			return new ItemStack(Material.INK_SAC, 1, (short) 0, (byte) 1);
 	}
 
 	@Override

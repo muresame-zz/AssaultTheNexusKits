@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.gmail.lynx7478.anni.anniEvents.ResourceBreakEvent;
 import com.gmail.lynx7478.anni.kits.Loadout;
+import com.gmail.lynx7478.anni.utils.VersionUtils;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -73,13 +74,35 @@ public class Lumberjack extends KitBase
 		{
 			if(event.getPlayer().getKit().equals(this))
 			{
-				if(event.getResource().Type == Material.LOG)
+// 			Checking for the name log should work on all versions.
+				if(event.getResource().toString().contains("LOG"))
 				{
 					ItemStack[] stacks = event.getProducts();
 					for(int x = 0; x < stacks.length; x++)
 						stacks[x].setAmount(stacks[x].getAmount()*2);
 					event.setProducts(stacks);	
 				}
+				
+/*				if(!VersionUtils.getVersion().contains("13"))
+				{
+					if(event.getResource().Type == Material.LOG)
+					{
+						ItemStack[] stacks = event.getProducts();
+						for(int x = 0; x < stacks.length; x++)
+							stacks[x].setAmount(stacks[x].getAmount()*2);
+						event.setProducts(stacks);	
+					}
+				}else
+				{
+					if(event.getResource().toString().contains("LOG"))
+					{
+						ItemStack[] stacks = event.getProducts();
+						for(int x = 0; x < stacks.length; x++)
+							stacks[x].setAmount(stacks[x].getAmount()*2);
+						event.setProducts(stacks);	
+					}
+					}
+				} */
 			}
 		}
 }
