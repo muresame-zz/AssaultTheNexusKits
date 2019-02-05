@@ -40,7 +40,7 @@ public class Acrobat extends KitBase
 		final Acrobat k = this;
 		Delays.getInstance().createNewDelay(getInternalName(), new DelayUpdate(){
 			@Override
-			public void update(Player player, int secondsLeft)
+			public void update(Player player, int secondsLeft) throws ClassNotFoundException
 			{
 				if(secondsLeft <= 0)
 				{
@@ -53,7 +53,7 @@ public class Acrobat extends KitBase
 							sound = Sound.WITHER_SHOOT;
 						}else
 						{
-							sound = Sound.ENTITY_WITHER_SHOOT;
+							sound = (Sound) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Sound"),"ENTITY_WITHER_SHOOT");
 						}
 						
 						player.playSound(player.getLocation(), sound, 1.0F, 2.0F);

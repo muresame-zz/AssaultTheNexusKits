@@ -34,7 +34,7 @@ public class Revealer extends AnniKit {
 	}
 
 	@Override
-	protected ItemStack specialItem()
+	protected ItemStack specialItem() throws ClassNotFoundException
 	{
 		Material material;
 		if(!VersionUtils.getVersion().contains("13"))
@@ -42,7 +42,7 @@ public class Revealer extends AnniKit {
 			material = Material.EYE_OF_ENDER;
 		}else
 		{
-			material = Material.ENDER_EYE;
+			material = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "ENDER_EYE");
 		}
 		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = firestorm.getItemMeta();
@@ -82,9 +82,12 @@ public class Revealer extends AnniKit {
 	}
 
 	@Override
-	protected ItemStack getIcon()
+	protected ItemStack getIcon() throws ClassNotFoundException
 	{
-		return new ItemStack(Material.EYE_OF_ENDER);
+		if(!VersionUtils.getVersion().contains("13"))
+			return new ItemStack(Material.EYE_OF_ENDER);
+		else
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "ENDER_EYE"));
 	}
 
 	@Override

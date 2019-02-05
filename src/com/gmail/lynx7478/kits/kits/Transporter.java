@@ -167,7 +167,7 @@ public class Transporter extends KitBase
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST,ignoreCancelled = true)
-	public void Teleport(PlayerToggleSneakEvent event)
+	public void Teleport(PlayerToggleSneakEvent event) throws ClassNotFoundException
 	{
 		if(event.isSneaking())
 		{
@@ -199,7 +199,7 @@ public class Transporter extends KitBase
 								sound = Sound.ENDERMAN_TELEPORT;
 							}else
 							{
-								sound = Sound.ENTITY_ENDERMAN_TELEPORT;
+								sound = (Sound) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Sound"), "ENTITY_ENDERMAN_TELEPORT");
 							}
 							tele.getLoc1().toLocation().getWorld().playSound(tele.getLoc1().toLocation(), sound, 1F,(float)Math.random());
 							tele.getLoc2().toLocation().getWorld().playSound(tele.getLoc2().toLocation(), sound, 1F,(float)Math.random());
@@ -214,7 +214,7 @@ public class Transporter extends KitBase
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void specialItemActionCheck(final PlayerInteractEvent event)
+	public void specialItemActionCheck(final PlayerInteractEvent event) throws ClassNotFoundException
 	{
 		if(event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_BLOCK)
 		{
@@ -276,7 +276,7 @@ public class Transporter extends KitBase
 							mat = Material.QUARTZ_ORE;
 						}else
 						{
-							mat = Material.NETHER_QUARTZ_ORE;
+							mat = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "NETHER_QUARTZ_ORE");
 						}
 						b.setType(mat);
 						setBlockOwner(b, p.getID());

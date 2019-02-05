@@ -22,6 +22,8 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.gmail.lynx7478.kits.base.KitBase;
 
+import net.minecraft.server.v1_10_R1.EntityHuman.EnumChatVisibility;
+
 public class Defender extends KitBase
 {
 
@@ -38,12 +40,12 @@ public class Defender extends KitBase
 	}
 
 	@Override
-	protected ItemStack getIcon() 
+	protected ItemStack getIcon() throws ClassNotFoundException 
 	{
 		if(!VersionUtils.getVersion().contains("13"))
 			return new ItemStack(Material.WOOD_SWORD);
 		else
-			return new ItemStack(Material.WOODEN_SWORD);
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "WOODEN_SWORD"));
 	}
 
 	@Override

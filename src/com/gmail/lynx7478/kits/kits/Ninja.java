@@ -33,7 +33,7 @@ public class Ninja extends AnniKit
 	}
 
 	@Override
-	protected ItemStack specialItem()
+	protected ItemStack specialItem() throws ClassNotFoundException
 	{
 		Material material;
 		if(!VersionUtils.getVersion().contains("13"))
@@ -41,7 +41,7 @@ public class Ninja extends AnniKit
 			material = Material.GOLD_BOOTS;
 		}else
 		{
-			material = Material.GOLDEN_BOOTS;
+			material = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "GOLDEN_BOOTS");
 		}
 		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = firestorm.getItemMeta();
@@ -81,9 +81,12 @@ public class Ninja extends AnniKit
 	}
 
 	@Override
-	protected ItemStack getIcon()
+	protected ItemStack getIcon() throws ClassNotFoundException
 	{
-		return new ItemStack(Material.GOLD_BOOTS);
+		if(!VersionUtils.getVersion().contains("13"))
+			return new ItemStack(Material.GOLD_BOOTS);
+		else
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "GOLDEN_BOOTS"));
 	}
 
 	@Override

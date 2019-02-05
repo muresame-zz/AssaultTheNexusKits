@@ -35,9 +35,17 @@ public class Thor extends AnniKit
 	}
 
 	@Override
-	protected ItemStack specialItem()
+	protected ItemStack specialItem() throws ClassNotFoundException
 	{
-		ItemStack hammer  = KitUtils.addSoulbound(new ItemStack(Material.GOLD_AXE));
+		Material mat;
+		if(!VersionUtils.getVersion().contains("13"))
+		{
+			mat = Material.GOLD_AXE;
+		}else
+		{
+			mat = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "GOLDEN_AXE");
+		}
+		ItemStack hammer  = KitUtils.addSoulbound(new ItemStack(mat));
 		ItemMeta meta = hammer.getItemMeta();
 		meta.setDisplayName(getSpecialItemName()+" "+ChatColor.GREEN+"READY");
 		hammer.setItemMeta(meta);
@@ -145,12 +153,12 @@ public class Thor extends AnniKit
 	}
 
 	@Override
-	protected ItemStack getIcon()
+	protected ItemStack getIcon() throws ClassNotFoundException
 	{
 		if(!VersionUtils.getVersion().contains("13"))
 		return new ItemStack(Material.GOLD_AXE);
 		else
-			return new ItemStack(Material.GOLDEN_AXE);
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "GOLDEN_AXE"));
 	}
 
 	@Override

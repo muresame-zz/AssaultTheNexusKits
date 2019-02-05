@@ -163,12 +163,12 @@ public class Assassin extends AnniKit
 	}
 
 	@Override
-	protected ItemStack getIcon()
+	protected ItemStack getIcon() throws ClassNotFoundException
 	{
 		if(!VersionUtils.getVersion().contains("13"))
 			return new ItemStack(Material.GOLD_SWORD);
 		else
-			return new ItemStack(Material.GOLDEN_SWORD);
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "GOLDEN_SWORD"));
 	}
 
 	@Override

@@ -115,7 +115,7 @@ public class Warrior extends KitBase
 //	}
 	
 	@Override
-	protected Loadout getFinalLoadout()
+	protected Loadout getFinalLoadout() throws ClassNotFoundException
 	{
 		Material mat;
 		if(!VersionUtils.getVersion().contains("13"))
@@ -123,7 +123,7 @@ public class Warrior extends KitBase
 			mat = Material.WOOD_SWORD;
 		}else
 		{
-			mat = Material.WOODEN_SWORD;
+			mat = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "WOODEN_SWORD");
 		}
 		return new Loadout().addSoulboundEnchantedItem(new ItemStack(mat), Enchantment.KNOCKBACK, 1).addWoodPick().addWoodAxe().addHealthPotion1();
 	}

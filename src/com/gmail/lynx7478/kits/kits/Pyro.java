@@ -37,7 +37,7 @@ public class Pyro extends AnniKit
 	}
 
 	@Override
-	protected ItemStack specialItem()
+	protected ItemStack specialItem() throws ClassNotFoundException
 	{
 		Material material;
 		if(!VersionUtils.getVersion().contains("13"))
@@ -45,7 +45,7 @@ public class Pyro extends AnniKit
 			material = Material.FIREBALL;
 		}else
 		{
-			material = Material.LEGACY_FIREBALL;
+			material = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "LEGACY_FIREBALL");
 		}
 		ItemStack firestorm  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = firestorm.getItemMeta();

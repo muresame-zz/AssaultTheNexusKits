@@ -192,13 +192,18 @@ public class Scorpio extends KitBase
 						Player user = owner.getPlayer();
 						if(user != null)
 						{
-							Sound sound;
+							Sound sound = null;
 							if(!VersionUtils.getVersion().contains("13"))
 							{
 								sound = Sound.DOOR_OPEN;
 							}else
 							{
-								sound = Sound.BLOCK_IRON_DOOR_OPEN;
+								try {
+									sound = (Sound) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Sound"), "BLOCK_IRON_DOOR_OPEN");
+								} catch (ClassNotFoundException e) 
+								{
+									e.printStackTrace();
+								}
 							}
 							if(owner.getTeam() == p.getTeam())
 							{			
@@ -206,8 +211,11 @@ public class Scorpio extends KitBase
 								Location loc2 = target.getLocation();
 								if(loc2.getY() >= loc1.getY())
 								{
-									target.getWorld().playSound(target.getLocation(), sound, 1F, 0.1F);
-									user.getWorld().playSound(user.getLocation(), sound, 1F, 0.1F);
+									if(sound != null)
+									{
+										target.getWorld().playSound(target.getLocation(), sound, 1F, 0.1F);
+										user.getWorld().playSound(user.getLocation(), sound, 1F, 0.1F);
+									}
 									loc2.setY(loc1.getY());
 									Vector vec = loc2.toVector().subtract(loc1.toVector()).setY(.08D).multiply(7);
 									user.setVelocity(vec);

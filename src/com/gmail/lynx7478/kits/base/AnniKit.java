@@ -29,7 +29,11 @@ public abstract class AnniKit extends KitBase
 	protected void setUp()
 	{
 		delays = Delays.getInstance();
-		specialItem = specialItem();
+		try {
+			specialItem = specialItem();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		if(getDelayLength() > 0 && useDefaultChecking())
 		{
 			delays.createNewDelay(getInternalName(), new StandardItemUpdater(getSpecialItemName(),specialItem.getType(),new Function<ItemStack,Boolean>(){
@@ -53,7 +57,7 @@ public abstract class AnniKit extends KitBase
 	
 	//getSpecialItem() has a guarantee that the special item name 
 	//has a value
-	protected abstract ItemStack specialItem();
+	protected abstract ItemStack specialItem() throws ClassNotFoundException;
 	protected abstract String defaultSpecialItemName();
 	protected abstract boolean isSpecialItem(ItemStack stack);
 	protected abstract boolean performPrimaryAction(Player player, AnniPlayer p);

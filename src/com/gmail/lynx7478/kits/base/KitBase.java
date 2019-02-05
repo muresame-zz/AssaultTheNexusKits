@@ -58,9 +58,23 @@ public abstract class KitBase extends Kit
 			Bukkit.getPluginManager().addPermission(perm);
 			perm.recalculatePermissibles();
 		}
-		icon = getIcon();
-		setUp();
-		this.loadout = getFinalLoadout().addNavCompass().finalizeLoadout();
+		try {
+			icon = getIcon();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			setUp();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		try 
+		{
+			this.loadout = getFinalLoadout().addNavCompass().finalizeLoadout();
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
 		return true;
 	}
 	
@@ -70,12 +84,12 @@ public abstract class KitBase extends Kit
 		return new IconPackage(icon,kitDescription);
 	}
 	
-	protected abstract void setUp();
+	protected abstract void setUp() throws ClassNotFoundException;
 	protected abstract String getInternalName();
-	protected abstract ItemStack getIcon();
+	protected abstract ItemStack getIcon() throws ClassNotFoundException;
 	protected abstract int setDefaults(ConfigurationSection section);
 	protected abstract List<String> getDefaultDescription();
-	protected abstract Loadout getFinalLoadout();
+	protected abstract Loadout getFinalLoadout() throws ClassNotFoundException;
 	
 	protected void addToList(List<String> list, String... strings)
 	{

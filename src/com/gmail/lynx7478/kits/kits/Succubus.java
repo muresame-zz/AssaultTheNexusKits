@@ -33,7 +33,7 @@ public class Succubus extends KitBase
 	private String sucItemName;
 	
 	@Override
-	protected void setUp()
+	protected void setUp() throws ClassNotFoundException
 	{
 		sucItem = KitUtils.addSoulbound(getIcon().clone());
 		ItemMeta m = sucItem.getItemMeta();
@@ -66,12 +66,12 @@ public class Succubus extends KitBase
 
 	@SuppressWarnings("deprecation")
 	@Override
-	protected ItemStack getIcon()
+	protected ItemStack getIcon() throws ClassNotFoundException
 	{
 		if(!VersionUtils.getVersion().contains("13"))
-		return new ItemStack(Material.INK_SACK, 1, (short) 0, (byte) 1);
+		return new ItemStack(Material.INK_SACK);
 		else
-			return new ItemStack(Material.INK_SAC, 1, (short) 0, (byte) 1);
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "INK_SAC"));
 	}
 
 	@Override

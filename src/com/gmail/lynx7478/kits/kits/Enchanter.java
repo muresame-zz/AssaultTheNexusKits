@@ -33,12 +33,12 @@ public class Enchanter extends KitBase
 	}
 
 	@Override
-	protected ItemStack getIcon()
+	protected ItemStack getIcon() throws ClassNotFoundException
 	{
 		if(!VersionUtils.getVersion().contains("13"))
 		return new ItemStack(Material.EXP_BOTTLE);
 		else
-			return new ItemStack(Material.EXPERIENCE_BOTTLE);
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "EXPERIENCE_BOTTLE"));
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class Enchanter extends KitBase
 	
 	//Increase the xp gained from mining blocks and potentially gives you an XP bottle (1% chance)
 	@EventHandler
-	public void onResourceBreak(ResourceBreakEvent event)
+	public void onResourceBreak(ResourceBreakEvent event) throws ClassNotFoundException
 	{
 		if(event.getPlayer().getKit().equals(this))
 		{
@@ -89,7 +89,19 @@ public class Enchanter extends KitBase
 				{
 					Player pl = event.getPlayer().getPlayer();
 					if(pl != null)
-						pl.getInventory().addItem(new ItemStack(Material.EXP_BOTTLE));
+					{
+						Material mat = null;
+						if(!VersionUtils.getVersion().contains("13"))
+						{
+							mat = Material.EXP_BOTTLE;
+						}else
+						{
+							mat = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "EXPERIENCE_BOTTLE");
+						}
+						
+						if(mat != null)
+							pl.getInventory().addItem(new ItemStack(mat));
+					}
 				}
 			}
 		}

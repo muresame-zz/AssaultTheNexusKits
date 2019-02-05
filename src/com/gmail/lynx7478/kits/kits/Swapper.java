@@ -27,7 +27,7 @@ public class Swapper extends AnniKit
 	}
 
 	@Override
-	protected ItemStack specialItem()
+	protected ItemStack specialItem() throws ClassNotFoundException
 	{
 		Material material;
 		if(!VersionUtils.getVersion().contains("13"))
@@ -35,7 +35,7 @@ public class Swapper extends AnniKit
 			material = Material.GREEN_RECORD;
 		}else
 		{
-			material = Material.LEGACY_GREEN_RECORD;
+			material = (Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "LEGACY_GREEN_RECORD");
 		}
 		ItemStack swapper  = KitUtils.addSoulbound(new ItemStack(material));
 		ItemMeta meta = swapper.getItemMeta();
@@ -104,9 +104,12 @@ public class Swapper extends AnniKit
 	}
 
 	@Override
-	protected ItemStack getIcon()
+	protected ItemStack getIcon() throws ClassNotFoundException
 	{
+		if(!VersionUtils.getVersion().contains("13"))
 		return new ItemStack(Material.GREEN_RECORD);
+		else
+			return new ItemStack((Material) Enum.valueOf((Class<Enum>) Class.forName("org.bukkit.Material"), "LEGACY_GREEN_RECORD"));
 	}
 
 	@Override

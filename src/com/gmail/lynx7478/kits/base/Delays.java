@@ -103,11 +103,24 @@ public class Delays
 		
 		public int update()
 		{
-			Player p = Bukkit.getPlayer(playerID);
+			Player p = null;
+			for(Player pl : Bukkit.getOnlinePlayers())
+			{
+				if(pl.getUniqueId().toString().equals(playerID.toString()))
+				{
+					p = pl;
+					break;
+				}
+			}
 			if(p != null)
 			{
 				int seconds = (int)((endTime-System.currentTimeMillis())/1000);
-				handler.update(p, seconds);
+				try {
+					handler.update(p, seconds);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return seconds;
 			}
 			return 0;
